@@ -21,6 +21,9 @@
     from t_user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="queryUserByUsername" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select  <include refid="Base_Column_List"></include> from t_user  where  is_valid=1 and user_name=#{userName}
+  </select>
   <insert id="insert" parameterType="com.shsxt.crm.vo.User" >
     insert into t_user (id, user_name, user_pwd, 
       true_name, email, phone, 

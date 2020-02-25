@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * BaseMapper  基本方法定义
  */
-@Repository
 public interface BaseMapper<T,ID> {
     /**
      * 添加记录返回行数
