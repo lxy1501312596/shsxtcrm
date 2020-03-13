@@ -1,6 +1,7 @@
 package com.shsxt.crm;
 
 import com.alibaba.fastjson.JSON;
+import com.shsxt.crm.exceptions.AuthFailedException;
 import com.shsxt.crm.exceptions.NoLoginException;
 import com.shsxt.crm.exceptions.ParamsException;
 import com.shsxt.crm.model.ResultInfo;
@@ -73,6 +74,11 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
                 resultInfo.setMsg("系统错误，请稍后再试!");
                 if(ex instanceof ParamsException){
                     ParamsException pe = (ParamsException) ex;
+                    resultInfo.setCode(pe.getCode());
+                    resultInfo.setMsg(pe.getMsg());
+                }
+                if(ex instanceof AuthFailedException){
+                    AuthFailedException pe = (AuthFailedException) ex;
                     resultInfo.setCode(pe.getCode());
                     resultInfo.setMsg(pe.getMsg());
                 }

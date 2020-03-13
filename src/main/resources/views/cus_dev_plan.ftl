@@ -9,7 +9,7 @@
 <body style="margin: 1px">
 <table id="dg" class="easyui-datagrid"
         pagination="true" rownumbers="true"
-       url="${ctx}/sale_chance/list?state=1" fit="true" toolbar="#tb" singleSelect="true">
+        url="${ctx}/sale_chance/list?state=1" fit="true" toolbar="#tb" singleSelect="true">
     <thead>
     <tr>
         <th field="cb" checkbox="true" align="center"></th>

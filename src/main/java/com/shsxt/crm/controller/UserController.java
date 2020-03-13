@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -54,6 +55,9 @@ public class UserController extends BaseController {
     @RequestMapping("user/save")
     @ResponseBody
     public  ResultInfo saveUser(User user){
+        user.getRoleIds().forEach(roleId->{
+            System.out.println(roleId);
+        });
         userService.saveUser(user);
         return  success("用户添加成功");
     }
@@ -71,5 +75,11 @@ public class UserController extends BaseController {
     public  ResultInfo deleteUser(Integer userId){
         userService.deleteUser(userId);
         return  success("用户删除成功");
+    }
+
+    @RequestMapping("user/queryAllCustomerManager")
+    @ResponseBody
+    public List<Map<String,Object>>  queryAllCustomerManager(){
+       return userService.queryAllCustomerManager();
     }
 }
